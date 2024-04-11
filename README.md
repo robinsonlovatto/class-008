@@ -6,3 +6,6 @@ poetry init
 poetry shell
 
 .gitignore
+
+poetry add pandera pandas
+poetry add fastparquet
