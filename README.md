@@ -1,11 +1,37 @@
-# class-008
+# ETL - From Json files to csv or Parquet
 
+A project that extracts data from json files, concatenate them, add a calculated column to the Pandas' Dataframe, then save the data to a csv or parquet file or both.
+
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/robinsonlovatto/python_etl_from_json_to_csv_or_parquet.git
+cd python_etl_from_json_to_csv_or_parquet
+
+```
+
+2. Configure the right version of Python with `pyenv`:
+```bash
+pyenv install 3.11.5
 pyenv local 3.11.5
+```
 
-poetry init
+3. Configure Poetry para Python version 3.11.5 and activate the virtual environment:
+
+```bash
+poetry env use 3.11.5
 poetry shell
+```
 
-.gitignore
+4. Install the project dependencies:
 
-poetry add pandera pandas
-poetry add fastparquet
+```bash
+poetry install
+```
+
+5. Run the project:
+```bash
+poetry run python pipeline.py
+```  
