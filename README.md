@@ -2,6 +2,8 @@
 
 A project that extracts data from json files, concatenate them, add a calculated column to the Pandas' Dataframe, then save the data to a csv or parquet file or both.
 
+Were used decorators to add logs with Loguru and measure time in each function.
+
 
 ### Installation
 

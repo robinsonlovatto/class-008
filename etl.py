@@ -1,8 +1,11 @@
 import pandas as pd
 import os
 import glob
+from log import log_decorator
+from timer import time_measure_decorator
 
-
+@time_measure_decorator
+@log_decorator
 def extract_data(path: str) -> pd.DataFrame:
     # list all the json files in the folder 'data'
     json_files = glob.glob(os.path.join(path, '*.json'))
@@ -15,10 +18,14 @@ def extract_data(path: str) -> pd.DataFrame:
 
     return df_total
 
+@time_measure_decorator
+@log_decorator
 def calculate_kpi_total_sales(df: pd.DataFrame) -> pd.DataFrame:
     df["Total"] = df["Quantity"] * df["Price"]
     return df
 
+@time_measure_decorator
+@log_decorator
 def load_data(df: pd.DataFrame, output_format: list):
     for format in output_format:
         if format == "csv":
@@ -26,8 +33,9 @@ def load_data(df: pd.DataFrame, output_format: list):
         if format == "parquet":
             df.to_parquet("data.parquet")
 
+@time_measure_decorator
+@log_decorator
 def pipeline_calculate_kpi_total_sales_consolidated(path: str, output_format: list):
     data_frame = extract_data(path=path)
     calculated_data_frame = calculate_kpi_total_sales(data_frame)
     load_data(calculated_data_frame, output_format)
-
